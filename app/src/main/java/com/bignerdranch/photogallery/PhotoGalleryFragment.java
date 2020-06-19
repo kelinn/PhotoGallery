@@ -36,17 +36,17 @@ public class PhotoGalleryFragment extends Fragment {
     }
 
     private class PhotoHolder extends  RecyclerView.ViewHolder {
-        // private TextView mTitleTextView;
+        private TextView mTitleTextView;
         private ImageView mItemImageView;
 
         public PhotoHolder(View itemView) {
             super(itemView);
-            mItemImageView = itemView.findViewById(R.id.gallery_item_imageView);
-           // mTitleTextView = (TextView) itemView;
+           // mItemImageView = itemView.findViewById(R.id.gallery_item_imageView);
+            mTitleTextView = (TextView) itemView;
         }
-        /*public void bindGalleryItem(GalleryItem item) {
+        public void bindGalleryItem(GalleryItem item) {
             mTitleTextView.setText(item.toString());
-        }*/
+        }
 
         public void bindDrawable(Drawable drawable) {
             mItemImageView.setImageDrawable(drawable);
@@ -63,20 +63,20 @@ public class PhotoGalleryFragment extends Fragment {
         @NonNull
         @Override
         public PhotoHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int viewType) {
-           //TextView textView = new TextView(getActivity());
-           //return new PhotoHolder(textView);
-             LayoutInflater inflater = LayoutInflater.from(getActivity());
-            View view = inflater.inflate(R.layout.gallery_item, viewGroup, false);
-            return new PhotoHolder(view);
+           TextView textView = new TextView(getActivity());
+           return new PhotoHolder(textView);
+            // LayoutInflater inflater = LayoutInflater.from(getActivity());
+            //View view = inflater.inflate(R.layout.gallery_item, viewGroup, false);
+            //return new PhotoHolder(view);
 
         }
 
         @Override
         public void onBindViewHolder(@NonNull PhotoHolder photoHolder, int position) {
            GalleryItem galleryItem = mGalleryItems.get(position);
-            // photoHolder.bindGalleryItem(galleryItem);
-            Drawable placeHolder = getResources().getDrawable(R.drawable.bill_up_close);
-            photoHolder.bindDrawable(placeHolder);
+             photoHolder.bindGalleryItem(galleryItem);
+           // Drawable placeHolder = getResources().getDrawable(R.drawable.descarga);
+            //photoHolder.bindDrawable(placeHolder);
 
         }
 
